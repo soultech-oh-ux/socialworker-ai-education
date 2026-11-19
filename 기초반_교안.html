@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>기초반 교안 · 사회복지사 실무 AI 교육</title>
+<meta name="description" content="사회복지사 AI 교육 기초반 — 읽고 그대로 따라 하는 4주 교안. 프롬프트 기초·실무 글쓰기·정보검색·상담일지 + 반복 실습 예제 5선." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#1b2a26;--sub:#5a6b64;--line:#e4e8e2;--bg:#fbfaf6;--paper:#fff;--seed:#2f7d4f;--seed-d:#245f3d;--seed-l:#eaf3ec;--gold:#b07d3f;--warn:#b5462f;--warn-bg:#fcefe9;--serif:"Noto Serif KR",serif;--sans:"Noto Sans KR",sans-serif;--code:"D2Coding","Consolas","Noto Sans KR",monospace;}
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+a{color:var(--seed-d);}.wrap{max-width:900px;margin:0 auto;padding:0 22px;}
+.khead{background:linear-gradient(160deg,#20402f,#2f7d4f);color:#fff;padding:54px 0 46px;}
+.khead .lv{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:5px 15px;border-radius:30px;font-size:.78rem;font-weight:700;letter-spacing:.06em;margin-bottom:16px;}
+.khead h1{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;line-height:1.35;}
+.khead .sub{margin-top:14px;color:#dbeede;font-size:1.02rem;max-width:620px;}
+.khead .meta{margin-top:22px;display:flex;gap:10px 26px;flex-wrap:wrap;font-size:.86rem;color:#c8e2cf;font-weight:600;}.khead .meta b{color:#fff;}
+main{padding:40px 0 80px;}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px;margin:22px 0;}
+.sec-title{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--seed);padding-bottom:10px;margin:48px 0 10px;}
+.sec-title .wk{font-family:var(--serif);font-weight:700;color:var(--seed);font-size:1.1rem;white-space:nowrap;}
+.sec-title h2{font-family:var(--serif);font-size:1.4rem;font-weight:700;}
+.sec-sub{color:var(--sub);font-size:.95rem;margin:6px 0 4px;}
+h3{font-family:var(--serif);font-size:1.12rem;margin:26px 0 10px;}h4{font-size:1rem;margin:18px 0 8px;color:var(--seed-d);}
+p{margin:10px 0;}ul,ol{margin:10px 0 10px 22px;}li{margin:6px 0;}
+.goal{background:var(--seed-l);border-left:4px solid var(--seed);border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0;}.goal b{color:var(--seed-d);}
+.steps{counter-reset:st;list-style:none;margin:16px 0;padding:0;}
+.steps>li{position:relative;padding:4px 0 16px 46px;margin:0;}
+.steps>li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:30px;height:30px;background:var(--seed);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;}
+.steps>li::after{content:"";position:absolute;left:14px;top:32px;bottom:0;width:2px;background:var(--line);}.steps>li:last-child::after{display:none;}.steps b{color:var(--seed-d);}
+.prompt{border:1px solid #d7e3d9;border-radius:12px;overflow:hidden;margin:14px 0;background:#f5faf6;}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;background:#e7f1e9;padding:8px 14px;font-size:.82rem;font-weight:700;color:var(--seed-d);}
+.prompt-head .copy{background:var(--seed);color:#fff;border:0;border-radius:7px;padding:6px 14px;font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s;}
+.prompt-head .copy:hover{background:var(--seed-d);}.prompt-head .copy.done{background:var(--gold);}
+.prompt pre{font-family:var(--code);font-size:.9rem;line-height:1.7;color:#223;white-space:pre-wrap;word-break:break-word;padding:16px 18px;margin:0;}
+.tip,.warn{border-radius:10px;padding:14px 18px;margin:16px 0;font-size:.94rem;}
+.tip{background:#fff8e9;border-left:4px solid var(--gold);}.tip b{color:var(--gold);}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn);}.warn b{color:var(--warn);}
+.practice{background:#eef4f1;border:1px dashed var(--seed);border-radius:12px;padding:18px 22px;margin:20px 0;}
+.practice .tag{display:inline-block;background:var(--seed);color:#fff;font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:8px;letter-spacing:.05em;}
+.check ul{list-style:none;margin-left:0;}.check li{padding-left:30px;position:relative;}.check li::before{content:"☑";position:absolute;left:0;color:var(--seed);}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}.tool{background:#fff;border:1px solid var(--line);border-radius:30px;padding:6px 14px;font-size:.82rem;font-weight:600;color:var(--sub);}.tool b{color:var(--seed-d);}
+.exwrap{background:linear-gradient(160deg,#f3f8f4,#eaf3ec);border:1px solid #cfe3d4;border-radius:18px;padding:28px 26px;margin:24px 0;}
+.excard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px;margin:16px 0;}
+.excard .exnum{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--seed);color:#fff;border-radius:50%;font-family:var(--serif);font-weight:700;margin-right:10px;}
+.excard h3{display:flex;align-items:center;margin:0 0 10px;font-size:1.1rem;}
+.excard .row{font-size:.94rem;margin:6px 0;}.excard .row b{color:var(--seed-d);}
+.projbox{background:#fffdf8;border:1px solid #ecdfc4;border-left:4px solid var(--gold);border-radius:12px;padding:20px 22px;margin:18px 0 10px;}
+.projbox .ph{font-family:var(--serif);font-weight:700;color:var(--gold);margin-bottom:6px;font-size:1.04rem;}
+.projbox .pd{color:var(--sub);font-size:.88rem;margin-bottom:8px;}
+.proj{padding:11px 0;border-top:1px dashed #e8ddc3;}.proj b{color:var(--ink);}
+.proj .hint{font-size:.85rem;color:var(--sub);margin-top:3px;}
+.proj .hint code{font-family:var(--code);background:#f1f0e8;padding:1px 6px;border-radius:4px;color:#3a4b43;}
+footer{background:#14211c;color:#9bb0a4;padding:34px 0;font-size:.84rem;text-align:center;}footer b{color:#dfe9e1;font-family:var(--serif);}
+@media print{.prompt-head .copy{display:none;}body{background:#fff;}.card,.excard{border:none;padding:0;}.khead{background:var(--seed)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:640px){.card{padding:22px 18px;}.khead{padding:40px 0 34px;}}
+</style>
+</head>
+<body>
+
+<div class="khead"><div class="wrap">
+  <span class="lv">기초반 · BASIC</span>
+  <h1>AI 첫걸음<br/>매일 쓰는 글쓰기와 정보 찾기</h1>
+  <p class="sub">AI를 처음 켜 보는 분도 괜찮습니다. 이 교안을 한 줄씩 따라 하면, 반복되는 안내문·문자·요약·상담일지를 절반의 시간에 끝낼 수 있습니다.</p>
+  <div class="meta"><span><b>대상</b> AI 입문자</span><span><b>구성</b> 토요일 2시간 × 4주 (8시간)</span><span><b>방식</b> 읽고 따라하기 · 실습 70%</span></div>
+</div></div>
+
+<main><div class="wrap">
+
+  <div class="card">
+    <h3>시작하기 전에 — 준비물과 도구</h3>
+    <p>이 교안에서 쓰는 도구입니다. 모두 <b>무료</b>로 시작할 수 있습니다.</p>
+    <div class="tools"><span class="tool"><b>ChatGPT</b> chatgpt.com</span><span class="tool"><b>Claude</b> claude.ai</span><span class="tool"><b>Gemini</b> gemini.google.com</span><span class="tool"><b>Perplexity</b> perplexity.ai (검색)</span></div>
+    <ul><li>노트북 또는 스마트폰, 인터넷</li><li>위 도구 중 <b>최소 1개 계정</b>(구글 계정으로 간편가입)</li><li>실습용 <b>비식별 가상 사례</b> — 실제 클라이언트 정보는 사용하지 않습니다.</li></ul>
+    <div class="warn"><b>⚠ 가장 중요한 약속</b><br/>① <b>개인정보 금지</b> — 이름·주민번호·주소·연락처·질병·가족사항은 AI에 그대로 입력하지 않습니다(가명·○○로 가립니다).<br/>② <b>사실 확인</b> — AI가 알려준 제도·법령·숫자는 반드시 <b>공식 출처(복지로·국가법령정보센터)</b>로 다시 확인합니다.<br/>③ <b>판단은 사람이</b> — 사정·결정의 책임은 사회복지사에게 있습니다.</div>
+  </div>
+
+  <!-- 1주차 -->
+  <div class="sec-title"><span class="wk">1주차</span><h2>AI 이해와 첫 대화</h2></div>
+  <p class="sec-sub">AI가 무엇인지 감을 잡고, '좋은 질문'으로 첫 결과물을 만듭니다.</p>
+  <div class="card">
+    <div class="goal"><b>오늘의 목표</b> — 계정을 만들고, 프롬프트 3요소로 '프로그램 안내문'을 만들어 본다.</div>
+    <h3>1. 생성형 AI란? (쉽게)</h3>
+    <p>생성형 AI는 <b>많은 글을 학습해 사람처럼 글을 '만들어 주는' 프로그램</b>입니다. 검색이 '찾아주는' 것이라면, 생성형 AI는 '써 주는' 것에 가깝습니다. 단, 가끔 <b>그럴듯한 거짓(환각)</b>을 하므로 사실 확인은 사람이 합니다.</p>
+    <h3>2. 계정 만들기 (따라하기)</h3>
+    <ol class="steps"><li><b>chatgpt.com</b> 접속 → [시작하기] → 구글 계정 로그인</li><li>아래 <b>입력창</b>이 보이면 준비 끝</li><li>인사해 봅니다: <i>"안녕, 너는 무엇을 도와줄 수 있어?"</i></li></ol>
+    <h3>3. 좋은 질문(프롬프트)의 3요소</h3>
+    <ul><li><b>① 역할</b> — "너는 10년 경력의 사회복지사야"</li><li><b>② 맥락</b> — 무엇을, 누구를 위해, 어떤 상황인지</li><li><b>③ 형식</b> — 분량·말투·들어갈 항목</li></ul>
+    <h3>4. 따라 해보기 — 프로그램 안내문</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 예시 프롬프트</span><button class="copy">복사</button></div>
+<pre>너는 10년 경력의 사회복지사야.
+노인복지관 '건강 체조 교실' 참가 안내문을 써줘.
+- 대상: 65세 이상 지역 어르신
+- 말투: 따뜻한 존댓말, 어르신이 읽기 쉽게
+- 분량: A4 반 장
+- 포함: 소개, 일시, 장소, 대상, 참가 방법, 문의처
+- 일시/장소/문의처는 [  ]로 비워줘</pre></div>
+    <div class="tip"><b>💡 팁</b> — 결과가 아쉬우면 이어서 요청하세요. <i>"더 짧게", "더 다정하게", "제목 3개 추천"</i>. 대화로 다듬는 것이 핵심입니다.</div>
+    <div class="practice"><span class="tag">실습</span><p>내가 실제로 만들 <b>안내문 1개</b>를 위 방식으로 작성해 보세요.</p></div>
+    <div class="check"><h4>체크포인트</h4><ul><li>계정을 만들고 첫 대화를 했다</li><li>역할·맥락·형식을 넣어 질문했다</li><li>안내문 초안을 만들었다</li></ul></div>
+  </div>
+
+  <!-- 2주차 -->
+  <div class="projbox">
+    <div class="ph">🗂 1주차 실습 프로젝트 5 — 글쓰기 기본 다지기</div>
+    <div class="pd">아래 5개를 직접 해보세요. 담당 분야(노인·장애·아동 등)에 맞춰 바꿔도 좋습니다.</div>
+    <div class="proj"><b>① 프로그램 모집 안내문</b> — 내 담당 프로그램 1개의 모집 안내문 A4 반 장.<div class="hint">힌트: <code>"너는 사회복지사야. ○○ 프로그램 모집 안내문을 따뜻한 존댓말로, 소개·일시·대상·신청방법 포함해 A4 반 장으로 써줘. 세부는 [ ]로 비워줘."</code></div></div>
+    <div class="proj"><b>② 자원봉사자 모집글</b> — 봉사자 모집 안내문 1장.<div class="hint">힌트: <code>"우리 기관 ○○ 활동 자원봉사자 모집 안내문을 써줘. 활동 내용·시간·지원 방법 포함, 참여를 권유하는 따뜻한 톤."</code></div></div>
+    <div class="proj"><b>③ 행사 안내문</b> — 바자회·나눔행사 등 행사 안내문.<div class="hint">힌트: <code>"지역 주민 대상 '사랑 나눔 바자회' 안내문을 써줘. 일시·장소·참여 방법·수익금 사용처 포함."</code></div></div>
+    <div class="proj"><b>④ 기관 소개 짧은 글</b> — 홈페이지/소개용 3문장.<div class="hint">힌트: <code>"우리 기관을 소개하는 3문장을 써줘. 하는 일·대상·지향점이 드러나게, 따뜻하고 신뢰감 있게."</code></div></div>
+    <div class="proj"><b>⑤ 제목 뽑기 연습</b> — 위 안내문의 제목 후보 10개 생성 → 2개 선택.<div class="hint">힌트: <code>"방금 쓴 안내문의 제목을 10개 추천해줘. 눈에 띄면서 따뜻한 것으로."</code></div></div>
+  </div>
+
+  <div class="sec-title"><span class="wk">2주차</span><h2>실무 글쓰기 — 공문·문자·이메일과 말투 조절</h2></div>
+  <p class="sec-sub">가장 자주 쓰는 실무 글을 빠르게 쓰고, 받는 사람에 맞춰 말투를 바꿉니다.</p>
+  <div class="card">
+    <div class="goal"><b>오늘의 목표</b> — 공문·독려 문자·협조 이메일을 만들고, 대상별 말투로 바꾼다.</div>
+    <h3>1. 공문·안내문 초안</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 공문 초안</span><button class="copy">복사</button></div>
+<pre>너는 사회복지기관 행정 담당자야.
+'겨울철 난방비 지원 사업' 참여 가정 모집 안내 공문을 써줘.
+- 수신: 지역 주민센터 및 유관기관
+- 어조: 공식적이고 간결한 공문체
+- 포함: 목적, 지원 내용, 신청 대상, 신청 기간, 제출 서류, 문의처
+- 수치·날짜는 [  ]로 비워줘</pre></div>
+    <h3>2. 짧은 안내 문자</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 독려 문자</span><button class="copy">복사</button></div>
+<pre>아래를 어르신께 보낼 안내 문자로 만들어줘.
+- 50자 내외, 정중하게, 이모지 1개
+- 내용: 내일 오전 10시 복지관 건강체조 교실 알림</pre></div>
+    <h3>3. 유관기관 협조 이메일</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 협조 요청 이메일</span><button class="copy">복사</button></div>
+<pre>유관기관에 보낼 정중한 협조 요청 이메일을 써줘.
+- 상황: 지역 독거 어르신 합동 사례회의 요청
+- 포함: 인사, 요청 배경, 제안 일정 2개, 회신 요청, 감사 인사
+- 제목도 추천해줘</pre></div>
+    <h3>4. 말투 바꾸기 (핵심 기술)</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 말투 변환</span><button class="copy">복사</button></div>
+<pre>방금 쓴 글을 3가지 버전으로 바꿔줘.
+1) 어르신이 읽기 쉬운 말투  2) 보호자에게 보내는 정중한 말투  3) 공문체</pre></div>
+    <div class="practice"><span class="tag">실습</span><p>이번 주 보낼 <b>문자 1건 + 이메일 1건</b>을 만들고 말투를 조정해 보세요.</p></div>
+    <div class="check"><h4>체크포인트</h4><ul><li>공문·문자·이메일 초안을 만들었다</li><li>말투를 3가지로 바꿔 보았다</li></ul></div>
+  </div>
+
+  <!-- 3주차 -->
+  <div class="projbox">
+    <div class="ph">🗂 2주차 실습 프로젝트 5 — 공문·문자·이메일</div>
+    <div class="pd">받는 사람(어르신·보호자·유관기관)에 맞춰 말투를 바꾸는 연습을 함께 하세요.</div>
+    <div class="proj"><b>① 후원 감사 문자</b> — 후원자에게 보내는 감사 문자.<div class="hint">힌트: <code>"후원해 주신 분께 보낼 감사 문자를 60자 내외로 정중하고 따뜻하게 써줘."</code></div></div>
+    <div class="proj"><b>② 일정 변경 안내 공문</b> — 프로그램 일정 변경 공문.<div class="hint">힌트: <code>"○○ 프로그램 일정 변경 안내 공문을 공문체로 써줘. 변경 전/후 일정, 사유, 문의처 포함, 날짜는 [ ]로."</code></div></div>
+    <div class="proj"><b>③ 유관기관 협조 이메일</b> — 사례회의·자원연계 협조 요청.<div class="hint">힌트: <code>"유관기관에 자원연계 협조를 요청하는 정중한 이메일을 제목과 함께 써줘."</code></div></div>
+    <div class="proj"><b>④ 민원 답변 초안</b> — 불만 민원에 대한 정중한 답변.<div class="hint">힌트: <code>"서비스에 불만을 표한 민원인에게 보낼 정중하고 공감 어린 답변 초안을 써줘. 사과·설명·후속조치 포함."</code></div></div>
+    <div class="proj"><b>⑤ 말투 3종 변환</b> — 안내문 1개를 어르신용/보호자용/공문체로.<div class="hint">힌트: <code>"이 글을 3가지로 바꿔줘. 1) 어르신용 쉬운 말 2) 보호자용 정중체 3) 공문체"</code></div></div>
+  </div>
+
+  <div class="sec-title"><span class="wk">3주차</span><h2>요약과 정보 찾기</h2></div>
+  <p class="sec-sub">긴 자료를 빠르게 요약하고, 복지제도를 쉽게 찾되 '사실 확인'하는 법을 익힙니다.</p>
+  <div class="card">
+    <div class="goal"><b>오늘의 목표</b> — 긴 문서를 요약하고, 복지제도를 찾은 뒤 공식 출처로 검증한다.</div>
+    <h3>1. 긴 자료 요약</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 요약</span><button class="copy">복사</button></div>
+<pre>아래 자료를 요약해줘.
+- 핵심 3줄 요약 + 꼭 해야 할 일(To-do) 목록
+- 어려운 용어는 쉬운 말로
+[자료 붙여넣기]</pre></div>
+    <h3>2. 회의 메모 정리</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 회의 메모 정리</span><button class="copy">복사</button></div>
+<pre>아래 회의 메모를 회의록으로 정리해줘.
+- 안건 / 논의 / 결정 사항 / 담당자·기한
+- 빠진 내용은 지어내지 말고 [확인 필요]로
+[메모 붙여넣기]</pre></div>
+    <h3>3. 복지제도 찾기 + 반드시 검증</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 제도 조사</span><button class="copy">복사</button></div>
+<pre>'기초연금'을 민원인에게 설명하려고 해.
+- 지원 대상, 신청 방법, 필요한 서류를 쉬운 말로
+- 내가 직접 확인할 공식 출처(사이트)도 알려줘</pre></div>
+    <div class="warn"><b>⚠ 검증 필수</b> — AI가 알려준 금액·소득기준·날짜는 최신이 아닐 수 있습니다. 안내 전 <b>복지로(bokjiro.go.kr)</b>, <b>국가법령정보센터(law.go.kr)</b>에서 반드시 확인하세요.</div>
+    <div class="practice"><span class="tag">실습</span><p>업무 자료 1개를 <b>3줄 요약</b>하고, 담당 업무 관련 <b>복지제도 1개</b>를 조사·검증해 보세요.</p></div>
+    <div class="check"><h4>체크포인트</h4><ul><li>긴 자료를 3줄로 요약했다</li><li>회의 메모를 회의록으로 정리했다</li><li>제도를 찾고 공식 출처로 확인했다</li></ul></div>
+  </div>
+
+  <!-- 4주차 -->
+  <div class="projbox">
+    <div class="ph">🗂 3주차 실습 프로젝트 5 — 요약·정보 찾기</div>
+    <div class="pd">제도·수치는 항상 공식 출처(복지로·국가법령정보센터)로 다시 확인하세요.</div>
+    <div class="proj"><b>① 긴 공문 요약</b> — 상급기관 공문을 3줄 + 할 일로.<div class="hint">힌트: <code>"아래 공문을 핵심 3줄로 요약하고, 우리 기관이 할 일을 목록으로 뽑아줘(담당·기한 보이면 함께). [공문]"</code></div></div>
+    <div class="proj"><b>② 회의 메모 → 회의록</b> — 끄적인 메모를 정식 회의록으로.<div class="hint">힌트: <code>"아래 메모를 회의록으로 정리해줘. 안건/논의/결정/담당·기한, 빠진 건 [확인 필요]. [메모]"</code></div></div>
+    <div class="proj"><b>③ 복지제도 쉬운 설명</b> — 담당 업무 관련 제도 1개.<div class="hint">힌트: <code>"'○○ 지원 제도'를 민원인에게 쉬운 말로 설명하고, 내가 확인할 공식 출처도 알려줘."</code></div></div>
+    <div class="proj"><b>④ 교육자료 핵심 요약</b> — 긴 매뉴얼·지침 요약.<div class="hint">힌트: <code>"아래 매뉴얼의 꼭 알아야 할 핵심을 7줄로 요약해줘. [자료]"</code></div></div>
+    <div class="proj"><b>⑤ 정책기사 3줄 공유</b> — 복지 정책 기사를 팀 공유용으로.<div class="hint">힌트: <code>"아래 기사를 동료에게 공유할 3줄 요약으로 만들어줘. 우리 업무에 주는 시사점 1줄 포함. [기사]"</code></div></div>
+  </div>
+
+  <div class="sec-title"><span class="wk">4주차</span><h2>상담 기록의 첫걸음 + 개인정보 지키기</h2></div>
+  <p class="sec-sub">상담 메모를 기록으로 다듬고, 가장 중요한 '개인정보 비식별화'를 몸에 익힙니다.</p>
+  <div class="card">
+    <div class="goal"><b>오늘의 목표</b> — 비식별 메모를 상담일지로 정리하고, 개인정보 보호를 체득한다.</div>
+    <h3>1. 먼저: 개인정보 비식별화 (가장 중요)</h3>
+    <ul><li>이름 → <b>A씨 / ○○○</b></li><li>나이 → <b>60대</b>(연령대)</li><li>주소·연락처·기관명 → <b>삭제 또는 ○○동</b></li><li>질병·장애·가족관계 → 꼭 필요한 경우만, 식별 불가하게</li></ul>
+    <div class="warn"><b>⚠ 원칙</b> — "이 메모만 보고 누구인지 알 수 없다"가 될 때까지 가린 뒤 넣습니다. 확신이 없으면 넣지 않습니다.</div>
+    <h3>2. 상담 메모 → 상담일지</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 상담일지 정리</span><button class="copy">복사</button></div>
+<pre>아래는 비식별 상담 메모야. 상담일지용 서술형으로 정리해줘.
+- 어조: 객관적·전문적, 추측·감정 배제
+- 사실(관찰·진술)과 사회복지사 의견을 구분
+- 메모에 없는 내용은 지어내지 말 것
+[비식별 메모]
+예) A씨(60대, 여성). 최근 수면 어려움 호소. 자녀 왕래 거의 없음. 식사 불규칙...</pre></div>
+    <h3>3. 개조식 ↔ 서술형</h3>
+    <div class="prompt"><div class="prompt-head"><span>📋 형식 변환</span><button class="copy">복사</button></div>
+<pre>위 상담일지를 개조식(요점 정리) 버전으로도 만들어줘.
+반대로 개조식 메모를 서술형으로 바꾸는 것도 가능하지?</pre></div>
+    <div class="practice"><span class="tag">수료 미니과제</span><p>내 업무 글 1개를 AI로 개선하고 <b>개선 전/후</b>를 비교해 발표하세요. 비식별화를 지켰는지 점검합니다.</p></div>
+    <div class="check"><h4>수료 체크</h4><ul><li>프롬프트 3요소로 질문한다</li><li>공문·문자·이메일·요약·상담일지 초안을 만든다</li><li>개인정보 비식별화와 사실 검증을 지킨다</li></ul></div>
+  </div>
+
+  <!-- 반복 실습 예제 5선 -->
+  <div class="projbox">
+    <div class="ph">🗂 4주차 실습 프로젝트 5 — 상담 기록·개인정보</div>
+    <div class="pd">모든 실습은 반드시 비식별(가명·○○) 처리된 가상 사례로 진행합니다.</div>
+    <div class="proj"><b>① 상담 메모 → 상담일지</b> — 비식별 메모를 서술형 일지로.<div class="hint">힌트: <code>"아래 비식별 메모를 상담일지로 정리해줘. 사실과 사회복지사 의견 구분, 없는 내용 금지. [메모]"</code></div></div>
+    <div class="proj"><b>② 개조식 ↔ 서술형 변환</b> — 같은 기록을 두 형식으로.<div class="hint">힌트: <code>"위 상담일지를 개조식 요약으로도 만들어줘."</code></div></div>
+    <div class="proj"><b>③ 비식별 처리 연습</b> — 식별정보 섞인 메모를 안전하게 가리기.<div class="hint">힌트: <code>"아래 메모에서 개인을 특정할 수 있는 정보를 찾아 가명·연령대·○○ 형태로 비식별 처리해줘. [메모]"</code></div></div>
+    <div class="proj"><b>④ 초기면접 기록 정리</b> — 초기 상담 내용을 기록 양식으로.<div class="hint">힌트: <code>"아래 비식별 초기면접 내용을 '주호소/배경/욕구/다음 계획' 양식으로 정리해줘. [내용]"</code></div></div>
+    <div class="proj"><b>⑤ 사례 한 문단 요약</b> — 긴 기록을 공유용 한 문단으로.<div class="hint">힌트: <code>"아래 사례기록을 사례회의 공유용 한 문단(5줄)으로 요약해줘. [기록]"</code></div></div>
+  </div>
+
+  <div class="sec-title"><span class="wk">실습</span><h2>반복 연습 예제 5선 — 익숙해질 때까지</h2></div>
+  <p class="sec-sub">아래 5개를 수업 후에도 반복해 연습하세요. 상황만 바꿔가며(다른 프로그램·대상) 여러 번 해보면 몸에 뱁니다.</p>
+  <div class="exwrap">
+
+    <div class="excard">
+      <h3><span class="exnum">1</span>경로당 치매예방 교실 모집 안내문</h3>
+      <div class="row"><b>상황</b> — 경로당 어르신 대상 '치매예방 인지활동 교실'(주 1회, 10주) 참여자를 모집한다.</div>
+      <div class="row"><b>만들 것</b> — 모집 안내문 1장(쉬운 말투) + 짧은 홍보 문자 1건</div>
+      <div class="prompt"><div class="prompt-head"><span>📋 힌트 프롬프트</span><button class="copy">복사</button></div>
+<pre>너는 사회복지사야. 경로당 어르신 대상 '치매예방 인지활동 교실' 모집 안내문을 써줘.
+- 주 1회·총 10주, 무료, 정원 15명
+- 쉬운 존댓말, A4 반 장, 포함: 소개·효과·일정·신청방법·문의([  ]로 비움)
+그리고 같은 내용을 50자 홍보 문자로도 만들어줘.</pre></div>
+    </div>
+
+    <div class="excard">
+      <h3><span class="exnum">2</span>폭염 프로그램 중단 안내 문자</h3>
+      <div class="row"><b>상황</b> — 폭염경보로 야외 프로그램이 당일 취소되어 어르신·보호자에게 알려야 한다.</div>
+      <div class="row"><b>만들 것</b> — 어르신용 문자 + 보호자용 문자(2가지 말투)</div>
+      <div class="prompt"><div class="prompt-head"><span>📋 힌트 프롬프트</span><button class="copy">복사</button></div>
+<pre>폭염경보로 오늘 오후 '텃밭 가꾸기' 프로그램이 취소됐어.
+안내 문자를 2가지로 써줘.
+1) 어르신용: 짧고 쉬운 말, 안전 당부 한마디
+2) 보호자용: 정중하게, 다음 일정 추후 안내 문구 포함</pre></div>
+    </div>
+
+    <div class="excard">
+      <h3><span class="exnum">3</span>긴 공문 3줄 요약 + 할 일 뽑기</h3>
+      <div class="row"><b>상황</b> — 상급기관에서 온 긴 공문을 빠르게 이해하고 우리 기관이 할 일을 정리해야 한다.</div>
+      <div class="row"><b>만들 것</b> — 3줄 요약 + To-do 목록(담당·기한 표시)</div>
+      <div class="prompt"><div class="prompt-head"><span>📋 힌트 프롬프트</span><button class="copy">복사</button></div>
+<pre>아래 공문을 요약해줘.
+- 핵심 3줄
+- 우리 기관이 해야 할 일 목록(담당/기한이 보이면 함께, 없으면 [확인 필요])
+- 어려운 행정용어는 쉬운 말로
+[공문 붙여넣기]</pre></div>
+    </div>
+
+    <div class="excard">
+      <h3><span class="exnum">4</span>복지제도 쉽게 설명 + 공식 출처 확인</h3>
+      <div class="row"><b>상황</b> — 생계가 급한 민원인에게 '긴급복지지원'을 쉽게 설명해야 한다.</div>
+      <div class="row"><b>만들 것</b> — 쉬운 설명 카드(대상·지원·신청) + 확인할 공식 출처 메모</div>
+      <div class="prompt"><div class="prompt-head"><span>📋 힌트 프롬프트</span><button class="copy">복사</button></div>
+<pre>'긴급복지지원 제도'를 생계가 급한 민원인에게 설명하려고 해.
+- 지원 대상, 지원 내용, 신청 방법을 아주 쉬운 말로 3개 항목으로
+- 내가 반드시 직접 확인해야 할 공식 출처도 알려줘
+(금액·기준은 최신 여부를 내가 확인하겠다고 전제해줘)</pre></div>
+      <div class="tip"><b>💡</b> 결과의 금액·기준은 반드시 복지로에서 최신으로 확인하세요.</div>
+    </div>
+
+    <div class="excard">
+      <h3><span class="exnum">5</span>비식별 상담 메모 → 상담일지</h3>
+      <div class="row"><b>상황</b> — 초기 상담 후 끄적인 메모를 정식 상담일지로 남겨야 한다.</div>
+      <div class="row"><b>만들 것</b> — 서술형 상담일지(사실/의견 구분) + 개조식 요약본</div>
+      <div class="prompt"><div class="prompt-head"><span>📋 힌트 프롬프트</span><button class="copy">복사</button></div>
+<pre>아래 비식별 메모를 상담일지로 정리해줘(서술형).
+- 사실(관찰·진술)과 사회복지사 의견을 구분
+- 추측·단정 금지, 없는 내용 지어내지 말 것
+- 끝에 개조식 요약 3줄도
+[비식별 메모]
+B씨(50대, 남성). 실직 6개월. 우울감·수면저하 호소. 가족과 거의 대화 없음.
+주민센터 안내로 방문. 일자리·심리상담 관심 보임.</pre></div>
+      <div class="warn"><b>⚠</b> 예시의 B씨는 가상 인물입니다. 실제 상담은 반드시 비식별 후 사용하세요.</div>
+    </div>
+
+    <div class="tip" style="margin-top:4px"><b>반복 연습법</b> — 같은 5개를 <b>대상(아동·장애인·1인가구)과 프로그램만 바꿔</b> 다시 해보세요. 3회 반복하면 프롬프트가 손에 익습니다.</div>
+  </div>
+
+  <div class="card" style="text-align:center;background:var(--seed-l);border-color:#cfe3d4;">
+    <h3 style="color:var(--seed-d)">🎉 기초반 완주</h3>
+    <p>이제 AI로 매일의 글쓰기·정보 찾기·상담일지를 할 수 있습니다. 위 5개 예제를 반복하며 손에 익혀 두세요.</p>
+  </div>
+
+</div></main>
+
+<footer><div class="wrap"><b>사회복지사를 위한 실무 AI 교육</b> · 기초반 교안<br/>모든 실습은 비식별 가상 사례로 진행하며, 개인정보 보호와 사실 검증을 최우선으로 합니다.</div></footer>
+
+<script>
+document.addEventListener('click',function(e){var b=e.target.closest('.copy');if(!b)return;var box=b.closest('.prompt');var pre=box&&box.querySelector('pre');if(!pre)return;var t=pre.innerText;function done(){var o=b.textContent;b.textContent='✓ 복사됨';b.classList.add('done');setTimeout(function(){b.textContent=o;b.classList.remove('done');},1600);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb);}else{fb();}function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(_){}document.body.removeChild(ta);}});
+</script>
+</body>
+</html>

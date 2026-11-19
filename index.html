@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>사회복지사를 위한 실무 AI 교육 · 기초·중급·고급</title>
+<meta name="description" content="상담·기록부터 사례관리·기획·홍보·평가까지, 현장에서 바로 쓰는 AI 활용을 수준별로 익힙니다. 기초·중급·고급, 각 토요일 2시간 × 4주." />
+<meta property="og:title" content="사회복지사를 위한 실무 AI 교육" />
+<meta property="og:description" content="기초·중급·고급 수준별 AI 실무 교육 — 상담·기록·기획·홍보·평가에 바로 쓰는 AI" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#1b2a26;--sub:#5a6b64;--line:#e4e8e2;--bg:#fbfaf6;--paper:#fff;--seed:#2f7d4f;--seed-d:#245f3d;--seed-l:#eaf3ec;--gold:#b07d3f;--warn:#b5462f;--serif:"Noto Serif KR",serif;--sans:"Noto Sans KR",sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+a{color:inherit;text-decoration:none;}.wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+header{position:sticky;top:0;z-index:30;background:rgba(251,250,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:9px;}
+.brand .dot{width:30px;height:30px;border-radius:9px;background:var(--seed);color:#fff;display:grid;place-items:center;font-size:1rem;}
+.navlinks{display:flex;gap:24px;font-size:.9rem;font-weight:600;color:var(--sub);}
+.navlinks a:hover{color:var(--seed);}
+@media(max-width:720px){.navlinks{display:none;}}
+.hero{background:linear-gradient(160deg,#1c3a2a,#2f7d4f);color:#fff;padding:78px 0 66px;text-align:center;}
+.hero .kick{color:#bfe3c9;letter-spacing:.22em;font-size:.78rem;font-weight:700;}
+.hero h1{font-family:var(--serif);font-size:clamp(1.9rem,4.6vw,3rem);font-weight:700;margin:16px 0 14px;line-height:1.34;}
+.hero p{color:#dceee1;max-width:640px;margin:0 auto;font-size:1.06rem;}
+.hero .facts{margin-top:26px;display:flex;gap:10px 26px;justify-content:center;flex-wrap:wrap;font-size:.9rem;color:#cfe7d6;font-weight:600;}
+.hero .cta{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:13px 26px;border-radius:40px;font-weight:700;font-size:.95rem;border:1.6px solid #fff;transition:.2s;}
+.btn.primary{background:#fff;color:var(--seed-d);}.btn.primary:hover{background:var(--gold);color:#fff;border-color:var(--gold);}
+.btn.ghost{color:#fff;}.btn.ghost:hover{background:rgba(255,255,255,.14);}
+section{padding:72px 0;}
+.sec-head{text-align:center;margin-bottom:44px;}
+.sec-head .kicker{color:var(--seed);font-weight:700;letter-spacing:.2em;font-size:.74rem;}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.1rem);margin-top:10px;}
+.sec-head p{color:var(--sub);margin-top:12px;max-width:640px;margin-left:auto;margin-right:auto;}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.lvcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;transition:.25s;}
+.lvcard:hover{transform:translateY(-6px);box-shadow:0 22px 46px -26px rgba(0,0,0,.3);border-color:var(--seed);}
+.lvcard .badge{align-self:flex-start;font-weight:700;font-size:.76rem;padding:5px 13px;border-radius:20px;letter-spacing:.04em;}
+.lvcard.b1 .badge{background:#eaf3ec;color:#245f3d;}
+.lvcard.b2 .badge{background:#e7f1f1;color:#1c5a5a;}
+.lvcard.b3 .badge{background:#efe9f4;color:#4a3a6b;}
+.lvcard h3{font-family:var(--serif);font-size:1.35rem;margin:16px 0 4px;}
+.lvcard .tl{color:var(--sub);font-size:.93rem;min-height:40px;}
+.lvcard ul{margin:14px 0 18px 18px;font-size:.9rem;color:#4a5b54;}
+.lvcard ul li{margin:5px 0;}
+.lvcard .go{margin-top:auto;display:inline-block;background:var(--ink);color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:700;transition:.2s;}
+.lvcard .go:hover{background:var(--seed);}
+.commons{background:var(--seed-l);border:1px solid #cfe3d4;border-radius:16px;padding:28px 30px;}
+.commons h3{font-family:var(--serif);color:var(--seed-d);margin-bottom:10px;}
+.commons ol{margin-left:20px;}.commons li{margin:7px 0;}
+.steprow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.stepc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center;}
+.stepc .n{width:44px;height:44px;margin:0 auto 12px;border-radius:50%;border:1.5px solid var(--seed);color:var(--seed);display:grid;place-items:center;font-family:var(--serif);font-weight:700;}
+.stepc b{display:block;margin-bottom:4px;}.stepc span{color:var(--sub);font-size:.85rem;}
+.tools{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-size:.86rem;font-weight:600;color:var(--sub);}
+.tool b{color:var(--seed-d);}
+.contact{background:var(--ink);color:#fff;border-radius:22px;padding:52px 40px;text-align:center;}
+.contact h2{font-family:var(--serif);font-size:1.8rem;margin-bottom:12px;}
+.contact p{color:#c7d2cb;margin-bottom:26px;}
+.contact .btn.primary{background:#fff;color:var(--ink);border-color:#fff;}
+.contact .btn.primary:hover{background:var(--seed);color:#fff;border-color:var(--seed);}
+footer{background:#14211c;color:#9bb0a4;padding:40px 0;font-size:.86rem;text-align:center;}
+footer b{color:#dfe9e1;font-family:var(--serif);}
+@media(max-width:820px){.levels{grid-template-columns:1fr;}.steprow{grid-template-columns:1fr 1fr;}}
+/* edit mode */
+#ed-fab{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--seed);color:#fff;border:none;border-radius:30px;padding:12px 18px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 5px 16px rgba(0,0,0,.25);}
+#ed-bar{position:fixed;right:18px;bottom:66px;z-index:60;display:none;flex-direction:column;gap:8px;}
+#ed-bar button{background:#fff;border:1px solid var(--seed);color:var(--seed-d);border-radius:9px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.14);}
+body.editing [contenteditable="true"]{outline:1.5px dashed var(--gold);background:#fffdf5;border-radius:4px;}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:99;display:none;align-items:center;justify-content:center;}
+.modal .box{background:#fff;padding:26px 24px;border-radius:14px;width:290px;text-align:center;box-shadow:0 12px 44px rgba(0,0,0,.3);}
+.modal input{width:100%;padding:11px;margin:12px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;text-align:center;}
+.modal button{background:var(--seed);color:#fff;border:none;border-radius:8px;padding:10px 16px;cursor:pointer;font-weight:700;}
+.modal .cancel{background:#eee;color:#555;margin-left:8px;}
+@media print{#ed-fab,#ed-bar,.modal{display:none!important;}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="brand" href="#top"><span class="dot">AI</span>사회복지사 실무 AI 교육</a>
+  <nav class="navlinks" data-noedit>
+    <a href="#levels">과정</a><a href="#principles">원칙</a><a href="#how">운영</a><a href="#contact">문의</a>
+  </nav>
+</div></header>
+
+<div id="editable-root">
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="kick">AI EDUCATION FOR SOCIAL WORKERS</div>
+      <h1>현장에서 바로 쓰는<br/>사회복지사 실무 AI 교육</h1>
+      <p>상담·기록부터 사례관리·기획·홍보·평가까지. 반복 업무를 절반의 시간으로 줄이고, 산출물의 질을 높이는 AI 활용을 수준별로 익힙니다.</p>
+      <div class="facts" data-noedit><span>📅 각 반 토요일 2시간 × 4주</span><span>🧩 기초 · 중급 · 고급</span><span>✋ 실습 중심 70%</span></div>
+      <div class="cta" data-noedit>
+        <a class="btn primary" href="#levels">과정 살펴보기</a>
+        <a class="btn ghost" href="#contact">교육 문의하기</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 소개 -->
+  <section>
+    <div class="wrap sec-head">
+      <div class="kicker">WHY AI</div>
+      <h2>왜 사회복지사에게 AI인가</h2>
+      <p>사회복지 현장은 상담 기록, 사업계획서, 보고서, 홍보물, 설문 등 '쓰고 정리하는 일'로 가득합니다. AI는 이 반복 업무를 도와, 사회복지사가 <b>사람을 만나는 본질적인 일</b>에 더 집중하게 합니다. 이 교육은 그 도구를 안전하고 효과적으로 쓰는 법을 가르칩니다.</p>
+    </div>
+  </section>
+
+  <!-- 3 레벨 -->
+  <section id="levels" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">CURRICULUM</div>
+        <h2>수준별 3개 과정</h2>
+        <p>내 수준에 맞게 시작하세요. 각 과정은 읽고 그대로 따라 하는 교안과 주차별 실습 프로젝트로 구성됩니다.</p>
+      </div>
+      <div class="levels">
+        <div class="lvcard b1">
+          <span class="badge">기초반 · BASIC</span>
+          <h3>AI 첫걸음</h3>
+          <div class="tl">매일 쓰는 글쓰기와 정보 찾기</div>
+          <ul><li>프롬프트의 3요소</li><li>공문·안내문·문자·이메일</li><li>요약·복지제도 검색·검증</li><li>상담일지 + 개인정보 비식별화</li></ul>
+          <a class="go" data-noedit href="기초반_교안.html">기초반 교안 보기 →</a>
+        </div>
+        <div class="lvcard b2">
+          <span class="badge">중급반 · INTERMEDIATE</span>
+          <h3>실무 산출물</h3>
+          <div class="tl">문서·홍보·데이터를 AI로</div>
+          <ul><li>사례관리 기록·재사용 템플릿</li><li>사업계획서·보고서</li><li>카드뉴스·포스터·발표자료</li><li>설문·엑셀·녹취록 자동화</li></ul>
+          <a class="go" data-noedit href="중급반_교안.html">중급반 교안 보기 →</a>
+        </div>
+        <div class="lvcard b3">
+          <span class="badge">고급반 · ADVANCED</span>
+          <h3>자동화·확산</h3>
+          <div class="tl">나만의 AI 비서와 기관 확산</div>
+          <ul><li>맞춤 AI 비서·프롬프트 라이브러리</li><li>공모사업·프로포절 전략</li><li>프로그램 평가·성과분석</li><li>윤리·보안·기관 AI 가이드</li></ul>
+          <a class="go" data-noedit href="고급반_교안.html">고급반 교안 보기 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 공통 원칙 -->
+  <section id="principles" style="padding-top:0;">
+    <div class="wrap">
+      <div class="commons">
+        <h3>🔒 전 과정 공통 3대 원칙</h3>
+        <ol>
+          <li><b>개인정보 비식별화</b> — 이름·주소·질병 등 식별정보는 AI에 입력하지 않습니다(가명·○○ 처리).</li>
+          <li><b>사실 검증</b> — 제도·법령·수치는 복지로·국가법령정보센터 등 공식 출처로 반드시 확인합니다.</li>
+          <li><b>전문가 책임</b> — 사정·판단·결정의 책임은 사회복지사에게 있으며, AI는 보조 도구입니다.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 운영 -->
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">HOW IT WORKS</div>
+        <h2>이렇게 진행합니다</h2>
+        <p>매 회차 2시간은 실습 중심으로, 내 업무에 바로 쓰는 산출물을 만들어 돌아갑니다.</p>
+      </div>
+      <div class="steprow">
+        <div class="stepc"><div class="n">1</div><b>복습·질문</b><span>지난주 적용 공유 (15분)</span></div>
+        <div class="stepc"><div class="n">2</div><b>개념·시연</b><span>핵심 개념과 예시 (30분)</span></div>
+        <div class="stepc"><div class="n">3</div><b>실습</b><span>내 업무에 바로 적용 (60분)</span></div>
+        <div class="stepc"><div class="n">4</div><b>공유·피드백</b><span>결과 나눔 (15분)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 도구 -->
+  <section style="padding-top:0;">
+    <div class="wrap sec-head">
+      <div class="kicker">TOOLS</div>
+      <h2>사용하는 주요 AI 도구</h2>
+      <p>모두 무료로 시작할 수 있습니다. 유료 기능은 선택이며, 교육은 무료 플랜만으로 실무가 가능하도록 설계했습니다.</p>
+      <div class="tools" data-noedit style="margin-top:22px;">
+        <span class="tool"><b>ChatGPT</b></span><span class="tool"><b>Claude</b></span><span class="tool"><b>Gemini</b></span>
+        <span class="tool"><b>Perplexity</b></span><span class="tool"><b>Canva</b></span><span class="tool"><b>Gamma</b></span>
+        <span class="tool"><b>미리캔버스</b></span><span class="tool"><b>Clova Note</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 문의 -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>교육 문의</h2>
+        <p>기관 단체 교육, 수강 신청, 일정 안내 등 궁금한 점을 문의해 주세요.</p>
+        <a class="btn primary" data-noedit href="mailto:kgoh9191@gmail.com?subject=사회복지사 AI 교육 문의">이메일로 문의하기</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>사회복지사를 위한 실무 AI 교육</b><br/>
+    기초 · 중급 · 고급 수준별 과정 · 모든 실습은 비식별 가상 사례로 진행합니다.<br/>
+    <span style="color:#7d9186">© 2026 Social Worker AI Education</span>
+  </div>
+</footer>
+</div><!-- /editable-root -->
+
+<!-- 편집 모드 -->
+<button id="ed-fab">✏️ 편집</button>
+<div id="ed-bar">
+  <button id="ed-save">💾 저장</button>
+  <button id="ed-export">⬇ 내보내기</button>
+  <button id="ed-reset">↺ 되돌리기</button>
+  <button id="ed-done">✓ 종료</button>
+</div>
+<div class="modal" id="ed-modal"><div class="box">
+  <div>편집 암호를 입력하세요</div>
+  <input type="password" id="ed-pw" autocomplete="off" />
+  <div><button id="ed-ok">확인</button><button class="cancel" id="ed-cancel">취소</button></div>
+</div></div>
+
+<script>
+(function(){
+  var PW="332661", KEY="sw-ai-edu-edits-v1";
+  var root=document.getElementById("editable-root");
+  var fab=document.getElementById("ed-fab"), bar=document.getElementById("ed-bar"), modal=document.getElementById("ed-modal");
+  var SEL="h1,h2,h3,h4,p,li,span.tl,div.tl,b,.kick,.kicker";
+  function blocks(){return Array.prototype.filter.call(root.querySelectorAll(SEL),function(el){
+     if(el.closest("[data-noedit]")) return false;
+     return !el.querySelector("h1,h2,h3,h4,p,li,ul,ol,div.tl");});}
+  try{var saved=JSON.parse(localStorage.getItem(KEY)||"null");
+     if(saved){blocks().forEach(function(el,ix){if(saved[ix]!=null)el.innerHTML=saved[ix];});}}catch(e){}
+  function setEdit(on){
+    document.body.classList.toggle("editing",on);
+    blocks().forEach(function(el){if(on)el.setAttribute("contenteditable","true");else el.removeAttribute("contenteditable");});
+    bar.style.display=on?"flex":"none"; fab.textContent=on?"✏️ 편집 중":"✏️ 편집";
+  }
+  fab.onclick=function(){ if(document.body.classList.contains("editing")){setEdit(false);return;}
+     modal.style.display="flex"; var i=document.getElementById("ed-pw"); i.value=""; i.focus();};
+  document.getElementById("ed-cancel").onclick=function(){modal.style.display="none";};
+  document.getElementById("ed-ok").onclick=function(){
+     if(document.getElementById("ed-pw").value===PW){modal.style.display="none";setEdit(true);}
+     else{alert("암호가 올바르지 않습니다.");}};
+  document.getElementById("ed-pw").addEventListener("keydown",function(e){if(e.key==="Enter")document.getElementById("ed-ok").click();});
+  document.getElementById("ed-save").onclick=function(){
+     var data={}; blocks().forEach(function(el,ix){data[ix]=el.innerHTML;});
+     localStorage.setItem(KEY,JSON.stringify(data)); alert("저장되었습니다(이 브라우저에 보관).");};
+  document.getElementById("ed-done").onclick=function(){setEdit(false);};
+  document.getElementById("ed-reset").onclick=function(){
+     if(confirm("저장한 편집을 모두 지우고 원래 내용으로 되돌릴까요?")){localStorage.removeItem(KEY);location.reload();}};
+  document.getElementById("ed-export").onclick=function(){
+     setEdit(false);
+     var clone=document.documentElement.cloneNode(true);
+     ["ed-fab","ed-bar","ed-modal"].forEach(function(id){var n=clone.querySelector("#"+id);if(n)n.remove();});
+     var out="<!DOCTYPE html>\n"+clone.outerHTML;
+     var blob=new Blob([out],{type:"text/html;charset=utf-8"});
+     var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="사회복지사_AI교육_랜딩(편집본).html";a.click();};
+})();
+</script>
+</body>
+</html>
