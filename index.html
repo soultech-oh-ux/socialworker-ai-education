@@ -227,6 +227,7 @@ body.editing [contenteditable="true"]{outline:1.5px dashed var(--gold);backgroun
 <!-- 편집 모드 -->
 <button id="ed-fab">✏️ 편집</button>
 <div id="ed-bar">
+  <button id="ed-music">🎵 음악 링크</button>
   <button id="ed-save">💾 저장</button>
   <button id="ed-export">⬇ 내보내기</button>
   <button id="ed-reset">↺ 되돌리기</button>
@@ -274,6 +275,40 @@ body.editing [contenteditable="true"]{outline:1.5px dashed var(--gold);backgroun
      var out="<!DOCTYPE html>\n"+clone.outerHTML;
      var blob=new Blob([out],{type:"text/html;charset=utf-8"});
      var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="사회복지사_AI교육_랜딩(편집본).html";a.click();};
+})();
+</script>
+<!-- 배경 음악 (YouTube) -->
+<div id="yt-music" data-video="jw47ANVkMTs" aria-hidden="true" style="position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;"></div>
+<button id="music-toggle" aria-label="배경 음악 켜기/끄기" style="position:fixed;left:18px;bottom:18px;z-index:9000;background:#2f7d4f;color:#fff;border:none;border-radius:30px;padding:11px 17px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 5px 16px rgba(0,0,0,.25);">🎵 음악 켜기</button>
+<script>
+(function(){
+  var YT_DEFAULT='jw47ANVkMTs', LS='sw-ai-music';
+  var holder=document.getElementById('yt-music'), btn=document.getElementById('music-toggle');
+  var player, soundOn=false, apiReady=false;
+  function savedId(){ try{return localStorage.getItem(LS)||'';}catch(e){return '';} }
+  function currentId(){ return savedId() || holder.getAttribute('data-video') || YT_DEFAULT; }
+  function parseId(s){ s=(s||'').trim(); if(/^[A-Za-z0-9_-]{11}$/.test(s)) return s;
+    var m=s.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([A-Za-z0-9_-]{11})/); return m?m[1]:''; }
+  function setBtn(){ btn.textContent = soundOn ? '🔊 음악 끄기' : '🎵 음악 켜기'; }
+  function enable(){ if(player&&player.unMute){try{player.unMute();player.setVolume(42);player.playVideo();}catch(e){}} soundOn=true; setBtn(); }
+  function disable(){ if(player&&player.mute){try{player.mute();}catch(e){}} soundOn=false; setBtn(); }
+  function create(id){ if(!apiReady)return; if(player&&player.destroy){try{player.destroy();}catch(e){}}
+    player=new YT.Player('yt-music',{videoId:id,playerVars:{autoplay:1,loop:1,playlist:id,controls:0,playsinline:1,rel:0},
+      events:{onReady:function(e){try{e.target.setVolume(42); if(soundOn){e.target.unMute();}else{e.target.mute();} e.target.playVideo();}catch(_){}}}}); }
+  window.onYouTubeIframeAPIReady=function(){ apiReady=true; create(currentId()); };
+  var tag=document.createElement('script'); tag.src="https://www.youtube.com/iframe_api"; document.head.appendChild(tag);
+  document.addEventListener('pointerdown', function(){ enable(); }, {once:true});
+  btn.addEventListener('pointerdown', function(e){ e.stopPropagation(); });
+  btn.addEventListener('click', function(){ soundOn?disable():enable(); });
+  function changeMusic(){
+    var url=prompt('배경 음악으로 쓸 유튜브 링크(또는 영상 ID)를 붙여넣으세요.\n예) https://youtu.be/XXXXXXXXXXX', currentId());
+    if(url===null) return; var id=parseId(url);
+    if(!id){ alert('유튜브 링크/ID를 인식하지 못했습니다. 주소를 다시 확인해 주세요.'); return; }
+    try{localStorage.setItem(LS,id);}catch(e){} holder.setAttribute('data-video', id);
+    soundOn=true; setBtn(); create(id);
+    alert('배경 음악이 변경되었습니다. ♪\n(모두에게 적용하려면 편집 종료 후 "내보내기"한 파일을 배포하세요.)');
+  }
+  var mb=document.getElementById('ed-music'); if(mb){ mb.addEventListener('click', changeMusic); }
 })();
 </script>
 </body>
