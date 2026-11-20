@@ -284,7 +284,7 @@ body.editing [contenteditable="true"]{outline:1.5px dashed var(--gold);backgroun
 (function(){
   var YT_DEFAULT='jw47ANVkMTs', LS='sw-ai-music';
   var holder=document.getElementById('yt-music'), btn=document.getElementById('music-toggle');
-  var player, soundOn=false, apiReady=false;
+  var player, soundOn=true, userOff=false, apiReady=false;
   function savedId(){ try{return localStorage.getItem(LS)||'';}catch(e){return '';} }
   function currentId(){ return savedId() || holder.getAttribute('data-video') || YT_DEFAULT; }
   function parseId(s){ s=(s||'').trim(); if(/^[A-Za-z0-9_-]{11}$/.test(s)) return s;
@@ -297,9 +297,12 @@ body.editing [contenteditable="true"]{outline:1.5px dashed var(--gold);backgroun
       events:{onReady:function(e){try{e.target.setVolume(42); if(soundOn){e.target.unMute();}else{e.target.mute();} e.target.playVideo();}catch(_){}}}}); }
   window.onYouTubeIframeAPIReady=function(){ apiReady=true; create(currentId()); };
   var tag=document.createElement('script'); tag.src="https://www.youtube.com/iframe_api"; document.head.appendChild(tag);
-  document.addEventListener('pointerdown', function(){ enable(); }, {once:true});
+  setBtn(); // 열릴 때 음악 ON 의도
+  var EVS=['pointerdown','touchstart','keydown'];
+  function kick(){ if(userOff) return; enable(); EVS.forEach(function(ev){ window.removeEventListener(ev,kick); }); }
+  EVS.forEach(function(ev){ window.addEventListener(ev,kick,{passive:true}); });
   btn.addEventListener('pointerdown', function(e){ e.stopPropagation(); });
-  btn.addEventListener('click', function(){ soundOn?disable():enable(); });
+  btn.addEventListener('click', function(){ if(soundOn){ userOff=true; disable(); } else { userOff=false; enable(); } });
   function changeMusic(){
     var url=prompt('배경 음악으로 쓸 유튜브 링크(또는 영상 ID)를 붙여넣으세요.\n예) https://youtu.be/XXXXXXXXXXX', currentId());
     if(url===null) return; var id=parseId(url);
